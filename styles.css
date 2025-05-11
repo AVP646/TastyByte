@@ -1,0 +1,28 @@
+    body {
+        background-color: bisque;
+    }
+
+    .title {
+        word-spacing: 2px;
+        letter-spacing: 1px;
+        font-size: 50px;
+
+    }
+
+    .main-p {
+        text-transform: capitalize;
+        font-family: roboto;
+        font-weight: 600;
+    }
+
+    .basket-icon {
+        color: black;
+        background-color: yellow;
+        padding: 5px;
+        border-radius: 50%;
+    }
+
+    .main-collection {
+        background:url(images/c.jpg);
+        border-radius: 20px;
+    }
