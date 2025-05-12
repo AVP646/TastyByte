@@ -1,4 +1,19 @@
 <?php
+
+session_start();
+
+if($_SESSION['login'] != true){
+    header("location:login.php");
+    exit;
+}
+else{
+    // alert();
+}
+
+?>
+
+
+<?php
 include "partial/_navbar.php";
 ?>
 

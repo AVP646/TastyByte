@@ -23,6 +23,7 @@
     }
 
     .main-collection {
-        background:url(images/c.jpg);
+        background:url(images/.jpg);
+        background-repeat: no-repeat;
         border-radius: 20px;
     }

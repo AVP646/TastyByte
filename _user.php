@@ -1,4 +1,7 @@
-<?php  include "_navbar.php"; ?>
+<?php  include "partial/_navbar.php"; ?>
+<?php  include "partial/_database.php"; ?>
+
+<?php session_start(); ?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -36,7 +39,7 @@
       height: 200px;
       width: 200px;
       border-radius: 50%;
-      background: url("user-image.avif");
+      background: url("partial/user-image.avif");
       background-position: center;
       background-repeat: no-repeat;
       background-size: cover;
@@ -49,14 +52,13 @@
     <div class="container my-5 user-main2">
       <div class="user-img"></div>
     </div>
-    
     <div class="container my-3">
       <div class="row align-items-start">
         <div class="col ">
           <h3>NAME </h1>
         </div>
         <div class="col">
-          <H4>Pankaj</H2>
+          <H4><?php echo $_SESSION['name']; ?></H2>
         </div>
 
         <div class="container my-3">
@@ -65,7 +67,7 @@
               <h3>USER </h1>
             </div>
             <div class="col">
-              <H4>Pankaj</H2>
+              <H4><?php echo $_SESSION['user']; ?></H2>
             </div>
 
             <div class="container my-3  ">
@@ -74,17 +76,17 @@
                   <h3>EMAIL </h1>
                 </div>
                 <div class="col">
-                  <H4>Pankaj</H2>
+                  <H4><?php echo $_SESSION['email']; ?></H2>
                 </div>
 
               </div>
-              <a href="#"><button type="button"
+              <a href="logout.php"><button type="button"
                   class="btn btn-danger d-grid gap-2 my-5 col-3 mx-auto">Logout</button></a>
             </div>
           </div>
 
 
-          <?php include "_footer.php"; ?>
+          <?php include "partial/_footer.php"; ?>
 </body>
 
 </html>
