@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="style.css" />
+  <title>Cart</title>
+ 
+</head>
+
+<body>
+  <div class="container">
+    <div class="cart">
+      <div class="cart-items">
+        <h2>Cart</h2>
+        <div id="cart-list"></div>
+        <a class="back" href="#">← Back to shop</a>
+      </div>
+      <div class="summary">
+        <h3>Summary</h3>
+        <p>ITEMS <span id="item-count">0</span> €<span id="item-total">0.00</span></p>
+        <label>SHIPPING</label>
+        <select id="shipping" onchange="updateTotal()">
+          <option value="5">Standard-Delivery: €5.00</option>
+          <option value="10">Express-Delivery: €10.00</option>
+        </select>
+        <label>DISCOUNT CODE</label>
+        <input id="code" placeholder="Enter your code" />
+        <div class="total">TOTAL PRICE €<span id="total">5.00</span></div>
+        <button>CHECKOUT</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    let cartItems = [
+      { name: "Shirt - DarkBlue", price: 99, img: "./T-S_image/1.jpg", quantity: 0 },
+      { name: "Shirt - LightGreen", price: 80, img: "./T-S_image/2.jpg", quantity: 0 },
+      { name: "Shirt - Coffee", price: 20, img: "./T-S_image/3.jpg", quantity: 0 }
+    ];
+
+    function renderCart() {
+      document.getElementById("cart-list").innerHTML = cartItems.map((item, index) => `
+        <div class="item" data-price="${item.price}">
+          <img src="${item.img}" alt="${item.name}">
+          <div class="item-info"><strong>${item.name}</strong><br> Cotton T-shirt</div>
+          <div class="item-actions">
+            <button onclick="updateQuantity(${index}, -1)">-</button>
+            <span class="quantity">${item.quantity}</span>
+            <button onclick="updateQuantity(${index}, 1)">+</button>
+          </div>
+          <div class="price">€ ${(item.price * item.quantity).toFixed(2)}</div>
+          <button class="remove-btn" onclick="removeItem(${index})">X</button>
+        </div>
+      `).join("");
+      updatePrices();
+    }
+
+    function updateQuantity(index, change) {
+      cartItems[index].quantity = Math.min(Math.max(cartItems[index].quantity + change, 0), 10);
+      renderCart();
+    }
+
+    function updatePrices() {
+      let totalItems = cartItems.reduce((sum, item) => sum + item.quantity, 0);
+      let total = cartItems.reduce((sum, item) => sum + item.price * item.quantity, 0);
+      document.getElementById('item-count').textContent = totalItems;
+      document.getElementById('item-total').textContent = total.toFixed(2);
+      updateTotal();
+    }
+
+    function updateTotal() {
+      document.getElementById('total').textContent = (
+        parseFloat(document.getElementById('item-total').textContent) + parseFloat(document.getElementById('shipping').value)
+      ).toFixed(2);
+    }
+
+    function removeItem(index) {
+      cartItems.splice(index, 1);
+      renderCart();
+    }
+
+    renderCart();
+  </script>
+</body>
+
+</html>
