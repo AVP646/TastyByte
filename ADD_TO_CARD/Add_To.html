@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <title>Cart</title>
+</head>
+
+<body class="m-0 font-sans bg-gray-100">
+  <div class="flex justify-center px-2 py-8">
+    <div class="flex flex-wrap max-w-[1000px] w-full bg-white rounded-xl shadow-md md:flex-col">
+      <div class="flex-2 min-w-[300px] p-8 box-border">
+        <h2 class="mb-5 text-2xl font-bold">Cart</h2>
+        <div id="cart-list"></div>
+        <a href="#" class="inline-block mt-5 text-black cursor-pointer">← Back to shop</a>
+      </div>
+      <div class="flex-1 min-w-[280px] bg-[#c0bebe] p-8 box-border rounded-r-xl md:rounded-b-xl md:rounded-r-none md:border-t border-gray-300">
+        <h3 class="mb-5 text-xl font-semibold">Summary</h3>
+        <p>ITEMS <span id="item-count">0</span> €<span id="item-total">0.00</span></p>
+        <label class="block mt-4">SHIPPING</label>
+        <select id="shipping" onchange="updateTotal()" class="w-full p-2 mb-5 border border-gray-300 rounded-md">
+          <option value="5">Standard-Delivery: €5.00</option>
+          <option value="10">Express-Delivery: €10.00</option>
+        </select>
+        <label class="block">DISCOUNT CODE</label>
+        <input id="code" placeholder="Enter your code" class="w-full p-2 mb-5 border border-gray-300 rounded-md" />
+        <div class="font-bold text-lg">TOTAL PRICE €<span id="total">5.00</span></div>
+        <button class="w-full p-2 mt-3 text-white bg-black rounded-md text-base cursor-pointer">CHECKOUT</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    let cartItems = [
+      { name: "Shirt - DarkBlue", price: 99, img: "./T-S_image/1.jpg", quantity: 0 },
+      { name: "Shirt - LightGreen", price: 80, img: "./T-S_image/2.jpg", quantity: 0 },
+      { name: "Shirt - Coffee", price: 20, img: "./T-S_image/3.jpg", quantity: 0 }
+    ];
+
+    function renderCart() {
+      document.getElementById("cart-list").innerHTML = cartItems.map((item, index) => `
+        <div class="flex flex-wrap items-center justify-start mb-5 border-b border-gray-300 pb-2 relative" data-price="${item.price}">
+          <img src="${item.img}" alt="${item.name}" class="w-[60px] flex-shrink-0">
+          <div class="flex-1 px-4 min-w-[100px] relative md:top-[-70px] md:right-[-70px]">
+            <strong>${item.name}</strong><br> Cotton T-shirt
+          </div>
+          <div class="flex items-center flex-nowrap mt-2 w-full md:w-auto">
+            <button onclick="updateQuantity(${index}, -1)" class="bg-black text-white border-none px-2 py-1 mx-1 cursor-pointer rounded">-</button>
+            <span class="min-w-[20px] text-center">${item.quantity}</span>
+            <button onclick="updateQuantity(${index}, 1)" class="bg-black text-white border-none px-2 py-1 mx-1 cursor-pointer rounded">+</button>
+          </div>
+          <div class="mt-2 min-w-[70px]">€ ${(item.price * item.quantity).toFixed(2)}</div>
+          <button class="bg-red-600 text-white border-none px-2 py-1 cursor-pointer rounded ml-auto relative self-start top-[45px] md:top-[-38px] md:self-end md:ml-0" onclick="removeItem(${index})">X</button>
+        </div>
+      `).join("");
+      updatePrices();
+    }
+
+    function updateQuantity(index, change) {
+      cartItems[index].quantity = Math.min(Math.max(cartItems[index].quantity + change, 0), 10);
+      renderCart();
+    }
+
+    function updatePrices() {
+      let totalItems = cartItems.reduce((sum, item) => sum + item.quantity, 0);
+      let total = cartItems.reduce((sum, item) => sum + item.price * item.quantity, 0);
+      document.getElementById('item-count').textContent = totalItems;
+      document.getElementById('item-total').textContent = total.toFixed(2);
+      updateTotal();
+    }
+
+    function updateTotal() {
+      document.getElementById('total').textContent = (
+        parseFloat(document.getElementById('item-total').textContent) + parseFloat(document.getElementById('shipping').value)
+      ).toFixed(2);
+    }
+
+    function removeItem(index) {
+      cartItems.splice(index, 1);
+      renderCart();
+    }
+
+    renderCart();
+  </script>
+</body>
+
+</html>
