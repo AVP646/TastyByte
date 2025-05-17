@@ -20,6 +20,9 @@
     {
     color:black;
     }
+    #form_nav a{
+        margin-top:6px;
+    }
     </style>
 </head>
 <body>
@@ -33,27 +36,29 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-auto">
         <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="#">HOME</a>
+          <a class="nav-link active" aria-current="page" href="index.php">HOME</a>
         </li>
         
          <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="#">ABOUT</a>
+          <a class="nav-link active" aria-current="page" href="about_us.php">ABOUT</a>
         </li>
           <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="#">CHIPS</a>
+          <a class="nav-link active" aria-current="page" href="#">PRODUCT</a>
         </li>
          </li>
           <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="#">SERVICES</a>
+          <a class="nav-link active" aria-current="page" href="contact_us.php">CONTACT US</a>
         </li>
      
      
       </ul>
-      <form class="d-flex" role="search">
+      
+      <form class="d-flex" role="search" id="form_nav">
         <input class="form-control me-2 rounded-pill  " type="search" placeholder="Search" aria-label="Search"/>
         <button class="btn"  type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
-         <button class="btn"  type="submit"><i class="fa-solid fa-basket-shopping"></i></button>
+        <a href="AddToCart.php"><i class="fa-solid fa-basket-shopping"></i></a> 
       </form>
+       
     </div>
   </div>
 </nav>

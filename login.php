@@ -32,8 +32,6 @@ if($_SERVER["REQUEST_METHOD"] == "POST")
          session_start();
         $_SESSION['login'] = true;
         $_SESSION['user'] = $user;
-          $_SESSION['email'];
-          $_SESSION['name'];
 
         header("location:index.php");
         }
