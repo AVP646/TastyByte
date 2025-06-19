@@ -1,9 +1,3 @@
-<?php
-
-require "partial/_navbar.php";
-
-
-?>
 
 <?php
 

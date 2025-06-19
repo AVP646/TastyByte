@@ -8,6 +8,23 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>signup</title>
+  <style>
+    .title{
+      text-align:center;
+      font-family: Arial, Helvetica, sans-serif;
+    font-weight: 600;
+    text-transform: capitalize;
+    }
+    .contact-form {
+            background-color: #BAC095;
+            padding: 20px;
+            border-radius: 15px;
+        }
+
+        .btn{
+          width:130px;
+        }
+  </style>
 </head>
 
 <body>
@@ -40,13 +57,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST")
     $hash = password_hash($pass,PASSWORD_DEFAULT);
     $sql = "INSERT INTO users (`name`, `username`, `email`, `password`, `date`) VALUES ('$name', '$user', '$email', '$hash' ,  current_timestamp())";
     $result = mysqli_query($conn,$sql);
-    alert2();
-     session_start();
-        
-        $_SESSION['name'] = $name;
-        $_SESSION['email'] = $email;
-
-
+    // alert2();
     header ("location:login.php");
   }
   else 
@@ -61,28 +72,28 @@ if($_SERVER["REQUEST_METHOD"] == "POST")
 ?>
 
 
-  <div class="container my-5">
-    <h1>Signup here</h1>
+  <div class="container col-md-6 my-5 contact-form">
+    <h1 class="title">Signup here</h1>
     <form action="signup.php" method="post" autocomplete="off">
       <div class="mb-3">
-        <label for="name" class="form-label">NAME</label>
-        <input type="text" name="name" class="form-control" id="name">
+        <label for="name" class="form-label title">NAME</label>
+        <input type="text" name="name" class="form-control" id="name" required>
       </div>
        <div class="mb-3">
-        <label for="user" class="form-label">username</label>
-        <input type="text" name="user" class="form-control" id="user">
+        <label for="user" class="form-label title">username</label>
+        <input type="text" name="user" class="form-control" id="user" required>
       </div>
        <div class="mb-3">
-        <label for="emial" class="form-label">E-mail</label>
-        <input type="emial" name="email" class="form-control" id="email">
+        <label for="emial" class="form-label title">E-mail</label>
+        <input type="emial" name="email" class="form-control" id="email" required>
       </div>
       <div class="mb-3">
-        <label for="pass" class="form-label">password</label>
-        <input type="text" name="pass" class="form-control" id="pass">
+        <label for="pass" class="form-label title">password</label>
+        <input type="text" name="pass" class="form-control" id="pass" required>
       </div>
       <div class="mb-3">
-        <label for="pass1" class="form-label">confirm password</label>
-        <input type="text" name="pass1" class="form-control" id="pass1">
+        <label for="pass1" class="form-label title">confirm password</label>
+        <input type="text" name="pass1" class="form-control" id="pass1" required>
       </div>
       <button type="submit" class="btn btn-primary">Submit</button>
     </form>
@@ -132,3 +143,5 @@ if($_SERVER["REQUEST_METHOD"] == "POST")
       </div>";
   }
 ?>
+
+  <?php include "partial/_footer.php"; ?>

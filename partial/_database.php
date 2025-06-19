@@ -1,8 +1,8 @@
 <?php
+$conn =  mysqli_connect("localhost", "root", "", "TastyByte");
 
-$conn = mysqli_connect("localhost","root","","TastyByte");
-if(!$conn){
-    echo "not done";
+if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
 }
 
 ?>

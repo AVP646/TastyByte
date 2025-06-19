@@ -1,0 +1,73 @@
+ 
+    .title {
+        word-spacing: 2px;
+        letter-spacing: 1px;
+        font-size: 50px;
+    }
+    
+    .main-collection {
+        background-color:#BAC095;
+        border-radius: 20px;
+        padding-bottom: 10px;
+    }
+
+    .bag{
+        padding: 30px 0;
+        border-radius: 20px;
+        background-color:#BAC095;
+    }
+
+    .cus1{
+        border-radius: 20px;
+        padding: 30px 0;
+        background-color:#BAC095;
+    }
+    .text-cus{
+        padding-top: 50px; 
+    }
+    #video{
+        background-color:#BAC095 ;
+        border-radius: 20px;
+    }
+    video{
+        padding: 0px 0;
+        width: 35vw;
+        border-radius: 35px;
+    } 
+        .p-imgs:hover{
+            height:180px;
+            transition:0.3s ease;
+        }
+        .main-p{
+            font-family: Arial, Helvetica, sans-serif;
+            font-weight: 700;
+            margin-top:10px;
+            text-transform: capitalize;
+        }
+        .p-prices{
+            color:black;
+            font-family: Arial, Helvetica, sans-serif;
+            font-weight: 500;
+            text-transform: capitalize;
+        }
+        .basket-icon{
+            padding:5px;
+        }
+        .btn-add:hover{
+                .basket-icon {
+            color: black;
+            background-color: yellow;
+            padding: 5px;
+            border-radius: 50%;
+            transition:0.3s ease;
+         }
+
+        }
+
+        .b-b{
+            background:red;
+            border:2px solid black;
+            border-radius: 20px;
+            margin:5px;
+        }
+       

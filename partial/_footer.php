@@ -11,7 +11,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
     <style>
          body {
-            background-color: bisque;
+            background-color: #D4DE95;
         } 
         .footer-a a {
             text-decoration: none;
@@ -32,7 +32,7 @@
 
 <body>
 <hr>
-    <div class="container-fluid text-center footer">
+    <div class="container-fluid text-center footer" >
         <div class="row footer-a">
             <div class="col footer-c my-5">
                 <h5>TastyByte ptv.Ltd</h5>
